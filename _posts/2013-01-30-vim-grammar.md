@@ -1,3 +1,8 @@
+---
+layout: post
+tags: [vim, grammar, beginner, tutorial]
+description: An Introduction to Vim's Grammar
+---
 ## Intro to Vim's Grammar ##
 
 A grammar is a set of formation rules for strings in a formal language. The
@@ -8,6 +13,8 @@ context, only their form.
 
 *Paraphrased from Wikipedia*
 
+### Alphabet
+
 Vim's alphabet is formed of all the keys and meta-keys on the keyboard. This
 includes combinations of keys pressed together, e.g. `Ctrl-A` is its own entry in
 the alphabet as opposed to only `a` and `Ctrl` being defined in the alphabet.
@@ -16,7 +23,7 @@ Lets define some of our alphabet mappings:
 
 ### Operators
 
-These function as the doing words in our grammar. They define how are text will
+Operators function as the doing words in our grammar. They define how are text will
 be processed.
 
 Main Operators:
@@ -25,7 +32,7 @@ Main Operators:
 	y - yank
 	c - change
 
-There are around 8/9 other useful operators, however these 3 comprise most of
+There are around 8 other useful operators, however these 3 comprise most of
 operations we will ever do in Vim.
 
 ### Motions
@@ -89,7 +96,7 @@ Lets expand on our original rule:
 
 	rule = [repetition] operator motion
 
-The [] square brackets in this notation mean that this symbol is optional. So we
+The `[]` square brackets in this notation mean that this symbol is optional. So we
 can optionally have a repetition as the first symbol of the rule.
 
 	3dw - delete a word 3 times. 
@@ -108,10 +115,10 @@ We could even have:
 
 Make sure you understand where the repetition is being applied. This last
 command is `3 times delete 5 words forward` and the first repetition applies to
-the whole command, it is more like - **do this next time THIS many times**.
+the whole command, it is more like - *do this next operation THIS many times*.
 
 This rule is already looks a bit messy. Lets move the repetition from the
-command definition to the operator and motion definition.
+rule definition to the operator and motion definition.
 
 	rule     = operator motion
 
@@ -124,20 +131,26 @@ Grammar definition:
 
 	text-obj = modifier object
 
-Lets define what our modifier is.
+Lets define what a modifier is:
 
 	modifier = 'a' | 'i'
 
-Defined here as the character **a** or **i**. The bar **|** is our choice
-operator here, we have to choose one or the other. 
+A modified is defined the keys `a` or `i`. The bar `|` is our choice operator
+here, we have to choose at least one of the symbols in the choice group.
 
-	a - generally means around our object including whitespace or symbols.
+	a - generally means around our object including some whitespace or
+		surrounding symbols.
+
 	i - usually means inside of the object, usually excluding whitespace and
 	    surrounding symbols.
 
 First object:
 	
 	w,W - word object, not to be confused with the movement!
+
+In context this has to be used with the `a` or `i` modifiers, just like any
+other text object, and it will effect the whole word/WORD regardless of cursor
+placement.
 
 When `daw` is used and the cursor is in the middle of a word, it effects the
 whole word an and the leading whitespace. This is different and must not be
@@ -159,30 +172,35 @@ More Objects:
 If you wanted to delete your function arguments inside of `function("first", "second",
 "third")` and your cursor was somewhere in the middle you can call:
 
-	di(
-
-or 
-
-	di)
+`di(` or `di)`
 
 This leaves us with `function()` with our cursor inside of the brackets. The
 *angle* or direction of the bracket does not matter.
 
+`da(` or `da)`
+
+This will leave us with `function` with our cursor at the end of the word.
+
 If we replaced the round brackets with square or curly braces, we can swap
 the object specifying character, ie `(` to `{`.
 
-	function { "arguments are here" }
+	function()
+	{
+		var x = "Y";
+		// Vim will even work on multiline objects!!
+		// Great!
+		var y = "X";
+		return x+y;
+	}
 
-While our cursor is in the middle of the argument:
+Typing `di{` or `di}` or even `diB` will leave us with a nice empty function
+with our cursor on the bottom bracket.
 
-	da{
+	function()
+	{
+	}
 
-Will leave us with:
-	
-	function
-
-It has deleted the surrounding character, as we specified the `a` modifier which
-meant around.
+### Second Rule
 
 We can combine our text objects using one of these two modifiers and an operator.
 This is our next rule.
@@ -193,9 +211,9 @@ Ideally we need to encapsulate this idea into another rule.
 
 	text-object = modifer object
 
-We need to define these rules also:
+We need to define these symbols more formally.
 
-	object      = ( | ) | { | } | [ | ] | " | ' | `
+	object      = w | W | p | s | ( | ) | { | } | [ | ] | " | ' | ` 
 	modifer     = a | i
 
 Lets add an optional repetition:
@@ -206,12 +224,16 @@ This gives us our simplified rule:
 	
 	rule = operator text-object
 
+### Back to One Rule
+
 We can combine this with our other rule:
 
 	rule = operator ( motion | text-object )
 
 Our composite rule now covers both text object manipulation and manipulation
 using motions.
+
+### More Rules
 
 To create a full grammar we would need to specify all of the commands and there
 are lot of corner cases.
