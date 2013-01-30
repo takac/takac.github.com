@@ -84,8 +84,8 @@ JB :
   #
   comments :
     provider : disqus
-    disqus :
-      short_name : jekyllbootstrap
+    disqus : 
+      short_name : pospro
     livefyre :
       site_id : 123
     intensedebate :
