@@ -5,6 +5,11 @@ description: An Introduction to Vim's Grammar
 ---
 ## Intro to Vim's Grammar ##
 
+<br /> 
+#### Update: Vim Grammar diagram used during my talk at Vim London available [here](assets/grammar-slide.html)
+
+<br /> 
+
 A grammar is a set of formation rules for strings in a formal language. The
 rules describe **how to form strings from the language's alphabet that are
 valid according to the language's syntax and structure**. A grammar does not
