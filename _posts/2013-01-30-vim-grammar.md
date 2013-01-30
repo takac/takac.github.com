@@ -6,7 +6,7 @@ description: An Introduction to Vim's Grammar
 ## Intro to Vim's Grammar ##
 
 <br /> 
-#### Update: Vim Grammar diagram used during my talk at Vim London available [here](assets/grammar-slide.html)
+#### Update: Vim Grammar diagram used during my talk at Vim London available [here](/assets/grammar-slide.html)
 
 <br /> 
 
