@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <!-- <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css"
+        type="text/css" media="screen" title="no title" charset="utf-8"> -->
+        <title>Vim 's Grammar</title>
+    </head>
+    <style type="text/css" media="screen">
+        h1,h2,h3,p
+		{
+		padding-top:0px;
+		padding-bottom:5px;
+		padding-right:50px;
+		padding-left:50px;
+		}
+		span.operator
+		{
+			color: #ff0000
+		}
+		span.motion
+		{
+			color: #00aaaa
+		}
+		span.repetition
+		{
+			color: orange
+		}
+		span.text-obj
+		{
+			color: blue
+		}
+		span.modifier
+		{
+			color: green
+		}
+		span.object
+		{
+			color: purple
+		}
+		span.bar
+		{
+			padding-right:10px;
+			padding-left:5px;
+			color: grey;
+			text-shadow: 0.0em 0.00em 0.21em yellow
+		}
+		.optional
+		{
+			display: none
+		}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        var hidden_flag = true;
+		function flipOptional()
+		{
+			reps = document.getElementsByClassName("optional")
+			changer = document.getElementById("changer");
+			if(hidden_flag)
+			{
+				for (var i =0 ; i <reps.length; i++ ) { reps[i].style.display = "inline"; }
+				hidden_flag = false;
+				changer.innerText = "Hide Optional";
+			}
+			else
+			{
+				for (var i =0 ; i <reps.length; i++ ) { reps[i].style.display = "none"; }
+				hidden_flag = true;
+				changer.innerText = "Show Optional";
+			}
+		}
+    </script>
+    
+    <body>
+        <h1>Vim's Grammar</h1>
+        <p>A grammar is - the rules describing how to we can combine the alphabet of a language
+            using valid syntax and structure.</p>
+        <h2>Vim 's alphabet = all of the keyboard</h2>
+        <h2 class="optional">
+            <span class="repetition">repetition</span> = non-zero-digit { zero
+            <span class="bar">|</span>digits-not-zero }</h2>
+        <h2>rule #1 =
+            <span class="optional">[<span class="repetition">repetition</span>]</span>
+            <span class="motion">motion</span>
+        </h2>
+        <h2>rule #2 =
+            <span class="optional">[<span class="repetition">repetition</span>]</span>
+            <span class="operator">operator</span>
+            <span class="optional">[<span class="repetition">repetition</span>]</span>
+            <span class="motion">motion</span>
+        </h2>
+        <h2>
+            <span class="text-obj">text-obj</span> =
+            <span class="modifier">modifier</span>
+            <span class="object">object</span>
+        </h2>
+        <h2>
+            <span class="modifier">modifier</span> = a
+            <span class="bar">|</span>i</h2>
+        <h2>
+            <span class="object">object</span> = w
+            <span class="bar">|</span>W
+            <span class="bar">|</span>s
+            <span class="bar">|</span>p
+            <span class="bar">|</span>[
+            <span class="bar">|</span>]
+            <span class="bar">|</span>{
+            <span class="bar">|</span>}
+            <span class="bar">|</span>(
+            <span class="bar">|</span>)
+            <span class="bar">|</span>"
+            <span class="bar">|</span>'
+            <span class="bar">|</span>`
+            <span class="bar">|</span>&lt;
+            <span class="bar">|</span>&gt;</h2>
+        <h2>refined rule #2 =
+            <span class="optional">[<span class="repetition">repetition</span>]</span>
+            <span class="operator">operator</span>
+            <span class="optional">[<span class="repetition">repetition</span>] </span>(
+            <span class="motion">motion</span>
+            <span class="bar">|</span>
+            <span class="text-obj">text - obj</span> )</h2>
+        <a href="javascript:flipOptional()" id="changer">Show Optional</a>
+    </body>
+
+</html>
