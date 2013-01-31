@@ -279,3 +279,21 @@ allows any number of matches including zero.
 	[repetition] operate-special
 	[repetition] selection-operator
 	[repetition] search-specify
+
+### More Resources
+
+If your still confused or want to learn more about Vim's grammar first stop would be Vim's help!
+
+	:help motion
+	:h operator
+	:h text-objects
+
+There are some other great resources available:
+
+[Learn to speak Vim – verbs, nouns, and modifiers](http://yanpritzker.com/2011/12/16/learn-to-speak-vim-verbs-nouns-and-modifiers/)  
+[The Grammar of Vim](http://rc3.org/2012/05/12/the-grammar-of-vim/)
+
+Here is also a **very good** Stack Overflow answer to a question on Vim, it is
+well worth a read and covers Vim's grammar is a way which really helped me
+understand when I first started Vimming.  
+[Grok with Vim](http://stackoverflow.com/a/1220118/1665365)
