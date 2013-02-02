@@ -258,9 +258,10 @@ We can repeat this command too:
 
 	rule = [repetition] duplicate-op
 
-Simple. Says what it means.
+Simple. We can use a motion by itself to move around the document.
 
 	rule = motion
+
 
 We can also have a general purpose rule for movement. We can see how we are now
 building up our grammar for Vim and how this can define all our commands we will
