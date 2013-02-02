@@ -24,7 +24,7 @@ Vim's alphabet is formed of all the keys and meta-keys on the keyboard. This
 includes combinations of keys pressed together, e.g. `Ctrl-A` is its own entry in
 the alphabet as opposed to only `a` and `Ctrl` being defined in the alphabet.
 
-Lets define some of our alphabet mappings:
+Let's define some of our alphabet mappings:
 
 ### Operators
 
@@ -38,7 +38,7 @@ Main Operators:
 	c - change
 
 There are around 8 other useful operators, however these 3 comprise most of
-operations we will ever do in Vim.
+the operations we will ever do in Vim.
 
 ### Motions
 
@@ -59,7 +59,7 @@ Common Motions:
 
 ### First Rule
 
-With this simple starting alphabet we can from some simple commands using a
+With this simple starting alphabet we can form some simple commands using a
 combination of `operator` and `motion`.
 
 	d$ - Delete to end of the line
@@ -81,23 +81,23 @@ later.
 
 ### Expanded First Rule
 
-Lets expand our alphabet with another symbol.
+Let's expand our alphabet with another symbol.
 
 Repetition. If we want to repeat our rule above a certain number of times we add
 a number in front of the operator.
 
-What form can this take:
+The form this can take:
 	
 	repetition = 1..9 { 0..9 }
 
 This formal definition says a repetition starts with a character between 1 and 9,
-and can have any number (including zero) more characters form 0 to 9. In other
+and continues with any number of number characters including zero. In other
 words the numbers greater than zero.
 
 THEY ARE CHARACTERS, NOT NUMBERS. This is because we are defining our symbols
 from raw character strings.
 
-Lets expand on our original rule:
+Let's expand on our original rule:
 
 	rule = [repetition] operator motion
 
@@ -110,7 +110,7 @@ We can however also say:
 
 	d3w - delete forward for 3 words.
 
-Lets add this definition to our rule:
+Let's add this definition to our rule:
 
 	rule = [repetition] operator [repetition] motion
 
@@ -122,7 +122,7 @@ Make sure you understand where the repetition is being applied. This last
 command is `3 times delete 5 words forward` and the first repetition applies to
 the whole command, it is more like - *do this next operation THIS many times*.
 
-This rule is already looks a bit messy. Lets move the repetition from the
+This rule is already looks a bit messy. Let's move the repetition from the
 rule definition to the operator and motion definition.
 
 	rule     = operator motion
@@ -136,9 +136,9 @@ Grammar definition:
 
 	text-obj = modifier object
 
-Lets define what a modifier is:
+Let's define what a modifier is:
 
-	modifier = 'a' | 'i'
+	modifier = a | i
 
 A modifier is defined the keys `a` or `i`. The bar `|` is our choice operator
 here, we have to choose at least one of the symbols in the choice group.
@@ -158,7 +158,7 @@ other text object, and it will affect the whole word/WORD regardless of cursor
 placement.
 
 When `daw` is used and the cursor is in the middle of a word, it affects the
-whole word an and the leading whitespace. This is different and must not be
+whole word and the leading whitespace. This is different and must not be
 confused with the behaviour of `dw` which is **delete till.. end of
 movement**.
 
@@ -221,7 +221,7 @@ We need to define these symbols more formally.
 	object      = w | W | p | s | ( | ) | { | } | [ | ] | " | ' | ` 
 	modifer     = a | i
 
-Lets add an optional repetition:
+Let's add an optional repetition:
 
 	text-object = [repetition] modifer object
 
@@ -241,16 +241,16 @@ using motions.
 ### More Rules
 
 To create a full grammar we would need to specify all of the commands and there
-are lot of corner cases.
+are many corner cases.
 
-We also need to mention a special case in our Vim grammar. When a operator is
+We should mention a few other rules in our Vim grammar. When a operator is
 called twice it produces its effects on the entire line.
 
 	dd - delete whole line 
 	yy - yank whole line
 	cc - delete whole line and go to insert mode
 
-New rule for this:
+A new rule for this:
 	
 	rule = duplicate-op
 
@@ -283,7 +283,8 @@ allows any number of matches including zero.
 
 ### More Resources
 
-If your still confused or want to learn more about Vim's grammar first stop would be Vim's help!
+If you're still confused or want to learn more about Vim's grammar the first
+stop would be Vim's help!
 
 	:help motion
 	:h operator
@@ -294,7 +295,6 @@ There are some other great resources available:
 [Learn to speak Vim – verbs, nouns, and modifiers](http://yanpritzker.com/2011/12/16/learn-to-speak-vim-verbs-nouns-and-modifiers/)  
 [The Grammar of Vim](http://rc3.org/2012/05/12/the-grammar-of-vim/)
 
-Here is also a **very good** Stack Overflow answer to a question on Vim, it is
+Here is also a **very good** Stack Overflow answer to a question on Vim; it is
 well worth a read and covers Vim's grammar is a way which really helped me
-understand when I first started Vimming.  
-[Grok with Vim](http://stackoverflow.com/a/1220118/1665365)
+understand when I first started Vimming. - [Grok with Vim](http://stackoverflow.com/a/1220118/1665365)
