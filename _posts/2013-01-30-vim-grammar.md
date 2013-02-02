@@ -50,7 +50,7 @@ however here is a some subset for our example alphabet.
 
 Common Motions:
 	
-	h,j,k,l - left, up, down, right
+	h,j,k,l - left, down, up, right
 	w,W - to start of next word or WORD
 	b,B - to start of previous word or WORD
 	e,E - to end of word or WORD
@@ -140,7 +140,7 @@ Lets define what a modifier is:
 
 	modifier = 'a' | 'i'
 
-A modified is defined the keys `a` or `i`. The bar `|` is our choice operator
+A modifier is defined the keys `a` or `i`. The bar `|` is our choice operator
 here, we have to choose at least one of the symbols in the choice group.
 
 	a - generally means around our object including some whitespace or
@@ -154,10 +154,10 @@ First object:
 	w,W - word object, not to be confused with the movement!
 
 In context this has to be used with the `a` or `i` modifiers, just like any
-other text object, and it will effect the whole word/WORD regardless of cursor
+other text object, and it will affect the whole word/WORD regardless of cursor
 placement.
 
-When `daw` is used and the cursor is in the middle of a word, it effects the
+When `daw` is used and the cursor is in the middle of a word, it affects the
 whole word an and the leading whitespace. This is different and must not be
 confused with the behaviour of `dw` which is **delete till.. end of
 movement**.
